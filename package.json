@@ -25,5 +25,6 @@
             "path": "./syntaxes/gutt.tmLanguage.json"
         }]
     },
+    "publisher": "alekseychikin",
     "license": "MIT"
 }

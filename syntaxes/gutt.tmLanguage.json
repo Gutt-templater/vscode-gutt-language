@@ -1,0 +1,117 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Gutt",
+	"scopeName": "source.gutt",
+	"patterns": [
+		{
+			"include": "text.html.basic"
+		}, {
+			"include": "#sentence-content"
+		}
+	],
+	"injections": {
+		"meta.tag.object.param.void.html": {
+			"include": "#attribute-value"
+		}
+	},
+	"repository": {
+		"sentence-content": {
+			"patterns": [
+				{
+					"begin": "{",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.sentence.begin.gutt"
+						}
+					},
+					"end": "}",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.sentence.end.gutt"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#sentence"
+						}
+					]
+				}
+			]
+		},
+		"sentence": {
+			"patterns": [
+				{
+					"match": "(true|false)",
+					"name": "constant.language.boolean.js.gutt"
+				}, {
+					"match": "\\b[a-zA-Z][a-zA-Z0-9_]*(\\-?[a-zA-Z0-9_]+)*\\b",
+					"name": "variable.other.readwrite.js.gutt"
+				}, {
+					"match": "\\b[a-zA-Z][a-zA-Z0-9_]*\\b",
+					"name": "variable.function.js"
+				}, {
+					"match": "(\\-|\\+|\\*|\\/|\\?\\?|\\+\\+|!!)",
+					"name": "keyword.operator.arithmetic.js.gutt"
+				}, {
+					"match": "(\\[|\\])",
+					"name": " punctuation.section.brackets.js"
+				}, {
+					"begin": "\"",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.html"
+						}
+					},
+					"contentName": "string.quoted.double.html",
+					"end": "(\")",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.html"
+						},
+						"1": {
+							"name": "source.css-ignored-vscode"
+						}
+					},
+					"name": "string.quoted.double.html"
+				},
+				{
+					"begin": "'",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.html"
+						}
+					},
+					"contentName": "string.quoted.single.html",
+					"end": "(')",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.html"
+						},
+						"1": {
+							"name": "source.css-ignored-vscode"
+						}
+					},
+					"name": "string.quoted.single.html"
+				}
+			]
+		},
+		"attribute-value": {
+			"patterns": [
+				{
+					"begin": "=",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.separator.key-value.html"
+						}
+					},
+					"end": "(?<=[^\\s=])(?!\\s*=)|(?=/?>)",
+					"patterns": [
+						{
+							"include": "#sentence-content"
+						}
+					]
+				}
+			]
+		}
+	}
+}

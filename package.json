@@ -1,0 +1,25 @@
+{
+    "name": "vscode-gutt-language",
+    "displayName": "Gutt Language Support",
+    "description": "Syntax highlighting for Gutt templates in VSCode",
+    "version": "0.1.0",
+    "engines": {
+        "vscode": "^1.68.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "gutt",
+            "aliases": ["Gutt", "gutt"],
+            "extensions": [".gutt",".tmplt"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "gutt",
+            "scopeName": "source.gutt",
+            "path": "./syntaxes/gutt.tmLanguage.json"
+        }]
+    }
+}
